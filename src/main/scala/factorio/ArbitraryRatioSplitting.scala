@@ -12,7 +12,6 @@ class ArbitraryRatioSplitting extends Module {
         val numerator = Input(SInt(32.W))
         val denominator = Input(SInt(32.W))
         val inserterStackSize = Output(SInt(32.W))
-        val itemsSinceLastIncrementOut = Output(SInt(32.W))
     })
 
     val itemsSinceLastIncrement = RegInit(0.S(32.W))
@@ -26,7 +25,6 @@ class ArbitraryRatioSplitting extends Module {
         itemsSinceLastIncrement := itemsSinceLastIncrement + io.enterBeltCount
     }
     io.inserterStackSize := itemCountPendingGrab
-    io.itemsSinceLastIncrementOut := itemsSinceLastIncrement
 }
 
 /**
@@ -36,7 +34,7 @@ class ArbitraryRatioSplitting extends Module {
 object ArbitraryRatioSplitting extends App {
   ChiselStage.emitSystemVerilogFile(
     new ArbitraryRatioSplitting,
-    firtoolOpts = Array("-disable-all-randomization", "-strip-debug-info", "-default-layer-specialization=enable")
+    firtoolOpts = Array("-disable-all-randomization", "-strip-debug-info", "--lowering-options=disallowLocalVariables")
   )
   val oldFile = new File("ArbitraryRatioSplitting.blueprint.txt")
   if (oldFile.exists) {
