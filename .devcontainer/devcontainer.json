@@ -1,0 +1,7 @@
+{
+    "name": "chisel3-for-factorio",
+    "build": {
+        "dockerfile": "chisel3-docker-for-factorio/Dockerfile",
+        "context": "chisel3-docker-for-factorio/"
+    }
+}

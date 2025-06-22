@@ -1,0 +1,3 @@
+[submodule ".devcontainer/chisel3-docker-for-factorio"]
+	path = .devcontainer/chisel3-docker-for-factorio
+	url = https://github.com/Xaeroxe/chisel3-docker-for-factorio.git
